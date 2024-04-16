@@ -10,10 +10,9 @@ const App: React.FC = () => {
 
    const fetchPhotos = async () => { 
     try {
-      const accessKey = '74Fg4r1vsTTSkY3-2-HbYsi0iThuTQbd6Owksvi0aJM';
+      const accessKey = 'rkJhFdRYK-W1srY7woF1kC48W3nIaG5OgZcB_o0CI3I';
       const apiUrl = `https://api.unsplash.com/photos/random?count=9&client_id=${accessKey}`;
       const response = await axios.get(apiUrl);
-      console.log(response)
       const photoUrls = response.data.map((photo: any) => photo.urls.small);
       return photoUrls;
     } catch (error) {
@@ -56,40 +55,19 @@ const App: React.FC = () => {
         photos: photos2,
       },
       {
-          id: 3,
-          name: "Customer3",
-          title: "Product manager",
-          address: "Whitefield, Bengaluru",
-          photos: photos3,
-        },
-        {
-          id: 4,
-          name: "Customer4",
-          title: "Team leader",
-          address: "MG Road, Bangalore",
-          photos: photos4,
-        },
-        {
-          id: 5,
-          name: "Customer5",
-          title: "Team leader",
-          address: "MG Road, Bangalore",
-          photos: photos4,
-        },
-        {
-          id: 6,
-          name: "Customer6",
-          title: "Team leader",
-          address: "MG Road, Bangalore",
-          photos: photos4,
-        },
-        {
-          id: 7,
-          name: "Customer7",
-          title: "Team leader",
-          address: "MG Road, Bangalore",
-          photos: photos4,
-        }
+        id: 3,
+        name: "Customer3",
+        title: "Product manager",
+        address: "Whitefield, Bengaluru",
+        photos: photos3,
+      },
+      {
+        id: 4,
+        name: "Customer4",
+        title: "Team leader",
+        address: "MG Road, Bangalore",
+        photos: photos4,
+      }
     ]; 
     setCustomers(mockedCustomers);
     console.log(mockedCustomers)
