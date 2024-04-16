@@ -1,4 +1,3 @@
-// src/components/CustomerList.tsx
 import React from 'react';
 import Customer from '../interfaces/Customer';
 

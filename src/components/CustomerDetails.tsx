@@ -1,4 +1,3 @@
-// src/components/CustomerDetails.tsx
 import React, { useState, useEffect } from 'react';
 import Customer from '../interfaces/Customer';
 
@@ -15,6 +14,7 @@ const CustomerDetails: React.FC<{ customer: Customer }> = ({ customer }) => {
 
   return (
     <div className="customer-details">
+      <h1>Customer Details</h1>
       <h2>{customer.name}</h2>
       <p>{customer.title}</p>
       <p>{customer.address}</p>

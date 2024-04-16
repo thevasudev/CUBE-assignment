@@ -8,77 +8,94 @@ const App: React.FC = () => {
   const [customers, setCustomers] = useState<Customer[]>([]);
   const [selectedCustomerId, setSelectedCustomerId] = useState<number | null>(null);
 
-  useEffect(() => {
-    // Function to fetch random photos from Unsplash
-    const fetchPhotos = async () => {
-      try {
-        const accessKey = 'VdUoIuhJLuYnfwaDhtQnrfxn14hrI3ALq42oN8DYGYQ';
-        const apiUrl = `https://api.unsplash.com/photos/random?count=6&client_id=${accessKey}`;
-        const response = await axios.get(apiUrl);
-        const photoUrls = response.data.map((photo: any) => photo.urls.small);
-        return photoUrls;
-      } catch (error) {
-        console.error('Error fetching photos:', error);
-        return [];
-      }
-    };
+   const fetchPhotos = async () => { 
+    try {
+      const accessKey = '74Fg4r1vsTTSkY3-2-HbYsi0iThuTQbd6Owksvi0aJM';
+      const apiUrl = `https://api.unsplash.com/photos/random?count=9&client_id=${accessKey}`;
+      const response = await axios.get(apiUrl);
+      console.log(response)
+      const photoUrls = response.data.map((photo: any) => photo.urls.small);
+      return photoUrls;
+    } catch (error) {
+      console.error('Error fetching photos:', error);
+      return [];
+    }
+  };
 
-    // Function to rotate photos every 10 seconds
-    const rotatePhotos = (photos: string[]) => {
-      setInterval(() => {
-        setCustomers(prevCustomers => {
-          return prevCustomers.map(customer => {
-            return {
-              ...customer,
-              photos: [...customer.photos.slice(1), customer.photos[0]],
-            };
-          });
+  const rotatePhotos = (photos: string[]) => {
+    setInterval(() => {
+      setCustomers(prevCustomers => {
+        return prevCustomers.map((customer,index) => {
+          return {
+            ...customer,
+            photos: [...customer.photos.slice(1), customer.photos[index]],
+          };
         });
-      }, 10000);
-    };
+      });
+    }, 10000);
+  };
 
-    // Mocked customer data
-    const fetchCustomerData = async () => {
-      const photos1 = await fetchPhotos();
-      const photos2 = await fetchPhotos();
-      const photos3 = await fetchPhotos();
-      const photos4 = await fetchPhotos();
-      // Adjust customer data as needed
-      const mockedCustomers: Customer[] = [
-        {
-          id: 1,
-          name: "Customer1",
-          title: "Male",
-          address: "Rajajinagar, Bangalore",
-          photos: photos1,
+  const fetchCustomerData = async () => {
+    const photos1 = await fetchPhotos();
+    const photos2 = await fetchPhotos();
+    const photos3 = await fetchPhotos();
+    const photos4 = await fetchPhotos();
+    const mockedCustomers: Customer[] = [
+      {
+        id: 1,
+        name: "Customer1",
+        title: "CEO",
+        address: "Rajajinagar, Bangalore",
+        photos: photos1,
+      },
+      {
+        id: 2,
+        name: "Customer2",
+        title: "Secretary",
+        address: "Basavanagudi, Bangalore",
+        photos: photos2,
+      },
+      {
+          id: 3,
+          name: "Customer3",
+          title: "Product manager",
+          address: "Whitefield, Bengaluru",
+          photos: photos3,
         },
         {
-          id: 2,
-          name: "Customer2",
-          title: "Female",
-          address: "Basavanagudi, Bangalore",
-          photos: photos2,
+          id: 4,
+          name: "Customer4",
+          title: "Team leader",
+          address: "MG Road, Bangalore",
+          photos: photos4,
         },
         {
-            id: 3,
-            name: "Customer3",
-            title: "Male",
-            address: "Whitefield, Bengaluru",
-            photos: photos3,
-          },
-          {
-            id: 4,
-            name: "Customer4",
-            title: "Male",
-            address: "MG Road, Bangalore",
-            photos: photos4,
-          }
-        // Add more mocked customers here if needed
-      ];
-      setCustomers(mockedCustomers);
-      rotatePhotos(mockedCustomers[0].photos); // Start rotating photos for the first customer
-    };
-
+          id: 5,
+          name: "Customer5",
+          title: "Team leader",
+          address: "MG Road, Bangalore",
+          photos: photos4,
+        },
+        {
+          id: 6,
+          name: "Customer6",
+          title: "Team leader",
+          address: "MG Road, Bangalore",
+          photos: photos4,
+        },
+        {
+          id: 7,
+          name: "Customer7",
+          title: "Team leader",
+          address: "MG Road, Bangalore",
+          photos: photos4,
+        }
+    ]; 
+    setCustomers(mockedCustomers);
+    console.log(mockedCustomers)
+    rotatePhotos(mockedCustomers[0].photos);
+  };
+  useEffect(() => {
     fetchCustomerData();
   }, []);
 

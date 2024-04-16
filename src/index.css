@@ -45,19 +45,28 @@ body {
     padding: 20px;
   }
   
-/* src/index.css */
+
 .photo-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3,1fr);
   grid-gap: 10px;
 }
 
 .photo-grid img {
-  width: 100%;
-  height: 100%;
+ width: 100%;
+ height: 100%;
   object-fit: cover;
   border-radius: 5px;
+  -webkit-box-shadow: 0px 0px 43px -11px rgba(0,0,0,0.5);
+  -moz-box-shadow: 0px 0px 43px -11px rgba(0,0,0,0.5);
+  box-shadow: 0px 0px 43px -11px rgba(0,0,0,0.5);
+  border-radius: 3px;
 }
 
-  
+.customer-details h1{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}  
   
