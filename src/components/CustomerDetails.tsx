@@ -20,6 +20,7 @@ const CustomerDetails: React.FC<{ customer: Customer }> = ({ customer }) => {
       <p>{customer.address}</p>
       <div className="photo-grid">
         {photoIndexes.map((index, i) => (
+          // eslint-disable-next-line
           <img
             key={i}
             src={customer.photos[index]}

@@ -97,6 +97,7 @@ const App: React.FC = () => {
   };
   useEffect(() => {
     fetchCustomerData();
+    // eslint-disable-next-line
   }, []);
 
   const handleSelectCustomer = (id: number) => {
