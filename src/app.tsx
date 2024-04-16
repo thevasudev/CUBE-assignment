@@ -10,7 +10,7 @@ const App: React.FC = () => {
 
    const fetchPhotos = async () => { 
     try {
-      const accessKey = 'rkJhFdRYK-W1srY7woF1kC48W3nIaG5OgZcB_o0CI3I';
+      const accessKey = '4DDSpwdYdDkWoW5etmh6b77mqdtQ8OwriUA0d0Wp_Qs';
       const apiUrl = `https://api.unsplash.com/photos/random?count=9&client_id=${accessKey}`;
       const response = await axios.get(apiUrl);
       const photoUrls = response.data.map((photo: any) => photo.urls.small);
